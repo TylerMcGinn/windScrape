@@ -32,11 +32,7 @@
                     <DataTemplate>
                         <ViewCell >
                             <Grid BackgroundColor="Coral" Margin="10">
-                                <!--<Grid.Resources>
-                                    <Style TargetType="listViewItem">
-                                        
-                                    </Style>
-                                </Grid.Resources>-->
+                               
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto"/>
                                     <ColumnDefinition Width="auto"/>
