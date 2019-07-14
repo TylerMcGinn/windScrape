@@ -1,28 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 using Xamarin.Forms;
 using System.Threading;
 using System.Collections.ObjectModel;
+using Xamarin.Forms.Xaml;
 
-namespace Xamarin_WeatherApp
+namespace Xamarin_WeatherApp.Views
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
-    [DesignTimeVisible(true)]
-    public partial class MainPage : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    
+    public partial class listView : ContentPage
     {
-
         Scrape webScraper = new Scrape();
         public delegate void myDel(string message);
         ObservableCollection<WeatherProperties> listData = new ObservableCollection<WeatherProperties>();
-
         ObservableCollection<WeatherProperties> initialList = new ObservableCollection<WeatherProperties>();
-        //List<WeatherProperties> newList = new List<WeatherProperties>();
-        public MainPage()
+
+        public listView()
         {
             InitializeComponent();
             refreshButton.Clicked += onRefreshButtonClicked;
@@ -30,9 +28,6 @@ namespace Xamarin_WeatherApp
             //populateList();
             //BindingContext = listData;
         }
-
-
-
         //private void WeatherList_BindingContextChanged(object sender, EventArgs e)
         //{
         //    if(BindingContext != null)
@@ -41,25 +36,25 @@ namespace Xamarin_WeatherApp
         //    }
         //}
 
-        private  void onRefreshButtonClicked(object sender, EventArgs e)
+        private void onRefreshButtonClicked(object sender, EventArgs e)
         {
-            //getData();
-            //listData.Clear();
-            //populateList();
-            listData.Add(new WeatherProperties() {  });
+            listData.Clear();
+            getData();
         }
 
         private async void getData()
         {
-            myActivityIndicator.IsRunning = true;
+            //myActivityIndicator.IsRunning = true;
+            await Navigation.PushModalAsync(new splashScreen());
             initialList = await webScraper.scrapeData(displayError);
-            myActivityIndicator.IsRunning = false;
+            await Navigation.PopModalAsync();
+            //myActivityIndicator.IsRunning = false;
             populateList();
         }
 
         private async void populateList()
         {
-            
+
             weatherList.ItemsSource = null;
             weatherList.ItemsSource = listData;
             foreach (var item in initialList)
@@ -82,7 +77,6 @@ namespace Xamarin_WeatherApp
         //    //await cell.View.FadeTo(1, 500, Easing.SpringIn);
         //    ViewExtensions.CancelAnimations(cell.View);
         //}
-        
+
     }
 }
-

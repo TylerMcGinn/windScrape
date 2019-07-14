@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Xamarin_WeatherApp.Views.splashScreen">
+    <ContentPage.Content>
+        <AbsoluteLayout AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="#407f7f7f">
+            <FlexLayout AbsoluteLayout.LayoutBounds="0.5,0.5,0.75,0.75" AbsoluteLayout.LayoutFlags="All" BackgroundColor="White" JustifyContent="Center" Direction="Column">
+                <Label Text="Wind Scrape" FlexLayout.AlignSelf="Center" FontSize="30" Margin="30"/>
+                <ActivityIndicator x:Name="loadingIndicator" Color="Orange" IsEnabled="True" IsRunning="True"/>
+                
+            </FlexLayout>
+            <FlexLayout AbsoluteLayout.LayoutBounds="0.5,0.5,0.75,0.75" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Transparent" >
+                <Label Text="Fetching Data..." FlexLayout.AlignSelf="End" Margin="5"/>
+            </FlexLayout>
+        </AbsoluteLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

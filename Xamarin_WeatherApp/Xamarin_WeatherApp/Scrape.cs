@@ -57,7 +57,7 @@ namespace Xamarin_WeatherApp
                     //Console.WriteLine(precipList[i]);
                     //Console.WriteLine(windList[i]);
 
-                    Lists.masterList.Add(new WeatherProperties() { Time = "Time: "+timeList[i], Temp = "Temp.: " + temp2List[i], Conditions = "Conditions: " + conditionList[i], Precipitation = "Precip.: " + precipList[i], Wind = "Wind: " + windList[i], Icon = setWeatherIcon(conditionList[i]) });
+                    Lists.masterList.Add(new WeatherProperties() { Time = "Time: " + timeList[i], Temp = "Temp.: " + temp2List[i], Conditions = "Conditions: " + conditionList[i], Precipitation = "Precip.: " + precipList[i], Wind = "Wind: " + windList[i], Icon = setWeatherIcon(conditionList[i]) });
                 }
                 catch (Exception e)
                 {
@@ -68,7 +68,7 @@ namespace Xamarin_WeatherApp
                         $"Contition:{conditionList.Count}\n" +
                         $"Precipitation:{precipList.Count}\n" +
                         $"Wind:{windList.Count}");
-                    //return Lists.masterList;
+                    return Lists.masterList;
                 }
             }
             Lists.masterList.Add(new WeatherProperties() { });
