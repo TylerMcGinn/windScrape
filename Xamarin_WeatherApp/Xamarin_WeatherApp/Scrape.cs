@@ -61,11 +61,13 @@ namespace Xamarin_WeatherApp
                     //Console.WriteLine(conditionList[i]);
                     //Console.WriteLine(precipList[i]);
                     //Console.WriteLine(windList[i]);
+
                     if (timeList[i].Contains("01:00"))
                     {
                         return Lists.masterList;
                     }
-                    Lists.masterList.Add(new WeatherProperties() { Time = "Time: " + timeList[i], Temperature = tempList[i],Temp = "Temp.: " + temp2List[i], Conditions = "Conditions: " + conditionList[i], Precipitation = "Precip.: " + precipList[i], Wind = "Wind: " + windList[i], Icon = setWeatherIcon(conditionList[i]) });
+                    Lists.masterList.Add(new WeatherProperties() { Time = timeList[i], Temperature = tempList[i], Temp = temp2List[i], Conditions = conditionList[i], Precipitation = precipList[i], Wind = windList[i], Icon = setWeatherIcon(conditionList[i]) });
+
                 }
                 catch (Exception e)
                 {
@@ -79,7 +81,9 @@ namespace Xamarin_WeatherApp
                     return Lists.masterList;
                 }
             }
-            Lists.masterList.Add(new WeatherProperties() { });
+            //Lists.masterList.Add(new WeatherProperties() { Time = "", Temperature = 0, Temp = "", Conditions = "", Precipitation = "", Wind = ""});
+            //Lists.masterList.Add(new WeatherProperties() { Time = "", Temperature = 0, Temp = "", Conditions = "", Precipitation = "", Wind = "" });
+            //Lists.masterList.Add(new WeatherProperties() { Time = "", Temperature = 0, Temp = "", Conditions = "", Precipitation = "", Wind = ""});
             //onDownloadComplete();
             return Lists.masterList;
         }
@@ -106,7 +110,7 @@ namespace Xamarin_WeatherApp
             {
                 return "dayRain.png";
             }
-            else if (condition.ToLower().Contains("cloud"))
+            else if (condition.ToLower().Contains("cloud") || condition.ToLower().Contains("cloudy"))
             {
                 return "dayCloudy.png";
             }

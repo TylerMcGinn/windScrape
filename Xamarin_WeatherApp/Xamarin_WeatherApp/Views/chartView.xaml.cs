@@ -96,10 +96,13 @@ namespace Xamarin_WeatherApp.Views
                         Label = item.Time,
                         ValueLabel = item.Temp,
                         Color = SKColor.Parse(rgb),
+                        TextColor = SKColor.Parse(rgb)
                     });
                 }
             }
-            var chart = new LineChart() { Entries = chartData };
+            var chart = new LineChart() { Entries = chartData , LineMode=LineMode.Straight, PointMode=PointMode.Circle, BackgroundColor = SKColor.Parse("4c7c7c7c"), LabelTextSize = 30};
+            //chart.BackgroundColor = SKColor.Parse("#4c7c7c7c");
+            //chart.PointSize = 10;
             chart1.Chart = chart;
             
         }

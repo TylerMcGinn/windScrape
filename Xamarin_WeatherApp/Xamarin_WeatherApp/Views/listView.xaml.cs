@@ -32,10 +32,10 @@ namespace Xamarin_WeatherApp.Views
             //BindingContext = listData;
         }
 
-        private void WebScraper_DownloadComplete(object source, EventArgs args)
-        {
-            DisplayAlert("Event Message", "event Fired", "ok");
-        }
+        //private void WebScraper_DownloadComplete(object source, EventArgs args)
+        //{
+        //    DisplayAlert("Event Message", "event Fired", "ok");
+        //}
 
         private void RefreshListBtn_Clicked(object sender, EventArgs e)
         {

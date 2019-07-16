@@ -6,17 +6,15 @@
             BarBackgroundColor="Coral"
              x:Class="Xamarin_WeatherApp.MainPage">
     <TabbedPage.Children>
-        <NavigationPage Title="Hourly">
-            <x:Arguments>
-                <views:listView/>
-            </x:Arguments>
-        </NavigationPage>
         <NavigationPage Title="Chart">
             <x:Arguments>
                 <views:chartView/>
             </x:Arguments>
         </NavigationPage>
+        <NavigationPage Title="Hourly">
+            <x:Arguments>
+                <views:listView/>
+            </x:Arguments>
+        </NavigationPage>
     </TabbedPage.Children>
-       
-
 </TabbedPage>
