@@ -9,9 +9,14 @@ using System.Collections.ObjectModel;
 
 namespace Xamarin_WeatherApp
 {
+    
     public class Scrape
     {
+
+        //public delegate void DownloadCompleteEventHandler(object source, EventArgs args);
+        //public event DownloadCompleteEventHandler DownloadComplete;
         public delegate void myDel(string errorMessage);
+
         public async Task<ObservableCollection<WeatherProperties>> scrapeData(myDel del)
         {
             string webUrl = @"https://weather.gc.ca/forecast/hourly/bc-84_metric_e.html";
@@ -56,8 +61,11 @@ namespace Xamarin_WeatherApp
                     //Console.WriteLine(conditionList[i]);
                     //Console.WriteLine(precipList[i]);
                     //Console.WriteLine(windList[i]);
-
-                    Lists.masterList.Add(new WeatherProperties() { Time = "Time: " + timeList[i], Temp = "Temp.: " + temp2List[i], Conditions = "Conditions: " + conditionList[i], Precipitation = "Precip.: " + precipList[i], Wind = "Wind: " + windList[i], Icon = setWeatherIcon(conditionList[i]) });
+                    if (timeList[i].Contains("01:00"))
+                    {
+                        return Lists.masterList;
+                    }
+                    Lists.masterList.Add(new WeatherProperties() { Time = "Time: " + timeList[i], Temperature = tempList[i],Temp = "Temp.: " + temp2List[i], Conditions = "Conditions: " + conditionList[i], Precipitation = "Precip.: " + precipList[i], Wind = "Wind: " + windList[i], Icon = setWeatherIcon(conditionList[i]) });
                 }
                 catch (Exception e)
                 {
@@ -72,8 +80,13 @@ namespace Xamarin_WeatherApp
                 }
             }
             Lists.masterList.Add(new WeatherProperties() { });
+            //onDownloadComplete();
             return Lists.masterList;
         }
+        //protected virtual void onDownloadComplete()
+        //{
+        //    if (DownloadComplete != null) DownloadComplete(this, EventArgs.Empty);
+        //}
 
         public static string setWeatherIcon(string condition)
         {

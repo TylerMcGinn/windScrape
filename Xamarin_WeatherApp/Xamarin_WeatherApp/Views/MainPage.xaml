@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Xamarin_WeatherApp"
              xmlns:views="clr-namespace:Xamarin_WeatherApp.Views"
+            BarBackgroundColor="Coral"
              x:Class="Xamarin_WeatherApp.MainPage">
     <TabbedPage.Children>
         <NavigationPage Title="Hourly">

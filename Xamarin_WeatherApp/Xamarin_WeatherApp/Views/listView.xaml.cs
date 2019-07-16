@@ -16,18 +16,36 @@ namespace Xamarin_WeatherApp.Views
     public partial class listView : ContentPage
     {
         Scrape webScraper = new Scrape();
-        public delegate void myDel(string message);
+
         ObservableCollection<WeatherProperties> listData = new ObservableCollection<WeatherProperties>();
         ObservableCollection<WeatherProperties> initialList = new ObservableCollection<WeatherProperties>();
-
+        public string title;
         public listView()
         {
             InitializeComponent();
-            refreshButton.Clicked += onRefreshButtonClicked;
+            title = "Hourly";
+            //webScraper.DownloadComplete += WebScraper_DownloadComplete;
+            refreshListBtn.Clicked += RefreshListBtn_Clicked;
             getData();
+            //BindingContext = this;
             //populateList();
             //BindingContext = listData;
         }
+
+        private void WebScraper_DownloadComplete(object source, EventArgs args)
+        {
+            DisplayAlert("Event Message", "event Fired", "ok");
+        }
+
+        private void RefreshListBtn_Clicked(object sender, EventArgs e)
+        {
+            initialList.Clear();
+            listData.Clear();
+            refreshListBtn.IsEnabled = false;
+            getData();
+            refreshListBtn.IsEnabled = true;
+        }
+
         //private void WeatherList_BindingContextChanged(object sender, EventArgs e)
         //{
         //    if(BindingContext != null)
@@ -36,11 +54,7 @@ namespace Xamarin_WeatherApp.Views
         //    }
         //}
 
-        private void onRefreshButtonClicked(object sender, EventArgs e)
-        {
-            listData.Clear();
-            getData();
-        }
+       
 
         private async void getData()
         {
@@ -59,9 +73,18 @@ namespace Xamarin_WeatherApp.Views
             weatherList.ItemsSource = listData;
             foreach (var item in initialList)
             {
-                await Task.Delay(200);
-                listData.Add(item);
+                try
+                {
+
+                    await Task.Delay(100);
+                    listData.Add(item);
+                }
+                catch (Exception)
+                {
+                    
+                }
             }
+            listData.Add(new WeatherProperties());
         }
 
         public async void displayError(string message)

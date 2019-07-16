@@ -4,30 +4,13 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             Title="Hourly"
+             
              x:Class="Xamarin_WeatherApp.Views.listView">
-    <ContentPage.Content>
-        <StackLayout BackgroundColor="Black">
-            <FlexLayout  JustifyContent="End">
-                <StackLayout Padding="0,5,40,0">
-                    <Label Text="Penticton, BC"
-                   TextColor="White"
-                   FontAttributes="Bold"
-                   FontSize="26"
-                   VerticalOptions="CenterAndExpand"
-                   />
-                </StackLayout>
-
-                <StackLayout Margin="0,5,5,0">
-                    <Button x:Name="refreshButton"
-                    Text="refresh"
-                    FontAttributes="Bold"
-                    TextColor="White"
-                    BorderColor="White"
-                    BorderWidth="2"
-                    BackgroundColor="Transparent"
-                    />
-                </StackLayout>
-            </FlexLayout>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="refreshListBtn" Icon="refresh.png"/>
+    </ContentPage.ToolbarItems>
+        
             <AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0,0,0,500">
                 <ListView x:Name="weatherList" HasUnevenRows="True" BackgroundColor="White" SeparatorColor="Red">
                     <ListView.ItemTemplate>
@@ -48,9 +31,6 @@
                                         <RowDefinition Height="auto"/>
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
-                                    <!--<BoxView BackgroundColor="Red" 
-                                         Grid.Column="0"
-                                         Grid.Row="0"/>-->
 
                                     <Image Source="{Binding Icon}" 
                                        WidthRequest="60"
@@ -100,6 +80,5 @@
 
                
             </AbsoluteLayout>
-        </StackLayout>
-    </ContentPage.Content>
+        <!--</StackLayout>-->
 </ContentPage>

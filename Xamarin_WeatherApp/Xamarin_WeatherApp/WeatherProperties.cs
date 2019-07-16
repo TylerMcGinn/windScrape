@@ -10,12 +10,12 @@ namespace Xamarin_WeatherApp
 {
     public class WeatherProperties
     {
-        public string Time { get; set; } = null;
-        public int? Temperature { get; set; } = null;
+        public string Time { get; set; }
+        public int Temperature { get; set; }
         public string Temp { get; set; }
-        public string Conditions { get; set; } = null;
-        public string Precipitation { get; set; } = null;
-        public string Wind { get; set; } = null;
+        public string Conditions { get; set; }
+        public string Precipitation { get; set; }
+        public string Wind { get; set; }
         public string Icon { get; set; }
         public Color backgroundColor { get; set; }
         public override string ToString()

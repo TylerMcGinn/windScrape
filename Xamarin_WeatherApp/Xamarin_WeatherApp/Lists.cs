@@ -97,7 +97,7 @@ namespace Xamarin_WeatherApp
             string pattern3 = @"/(\w+)";
             List<string> windList = new List<string>();
 
-            var windData = list.Where(x => x.ToLower().Contains("north") || x.ToLower().Contains("south") || x.ToLower().Contains("east") || x.ToLower().Contains("west") || x.ToLower().Contains("variable"));
+            var windData = list.Where(x => x.ToLower().Contains("north") || x.ToLower().Contains("south") || x.ToLower().Contains("east") || x.ToLower().Contains("west") || x.ToLower().Contains("variable") || x.ToLower().Contains("calm"));
             List<string> dataList = new List<string>(windData);
             foreach (var line in dataList)
             {
