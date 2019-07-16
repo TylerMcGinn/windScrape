@@ -17,7 +17,10 @@ namespace Xamarin_WeatherApp
         public string Precipitation { get; set; }
         public string Wind { get; set; }
         public string Icon { get; set; }
-        public Color backgroundColor { get; set; }
+        public static string Color(string temp)
+        {
+
+        }
         public override string ToString()
         {
             return $"Time:{Time}, Temperature:{Temperature}, Conditions:{Conditions}, Precipitation:{Precipitation}, Wind:{Wind}";

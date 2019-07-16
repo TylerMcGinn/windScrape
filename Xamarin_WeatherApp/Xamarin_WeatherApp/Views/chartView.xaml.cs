@@ -27,7 +27,7 @@ namespace Xamarin_WeatherApp.Views
         {
             InitializeComponent();
             Scrape scrape = new Scrape();
-            title = "Chart";
+            title = "Daily";
             chartRefreshButton.Clicked += ChartRefreshButton_Clicked;
             //scrape.DownloadComplete += Scrape_DownloadComplete;
             Lists.masterList.CollectionChanged += MasterList_CollectionChanged;
@@ -55,9 +55,23 @@ namespace Xamarin_WeatherApp.Views
             chartData.Clear();
             foreach (var item in Lists.masterList)
             {
-                if (item.Temperature < 0 && item.Temperature > -20)
+                if (item.Temperature < -20 && item.Temperature > -40)
                 {
-                    int mapVal = ((255 / 20) * (-1 * item.Temperature + 20));
+                    int mapVal = ((255 / 20) * (item.Temperature + 40));
+                    string rHex = (0).ToString("x2");
+                    string gHex = (255 - mapVal).ToString("x2");
+                    string bHex = (255).ToString("x2");
+                    string rgb = $"#ff{rHex}{gHex}{bHex}";
+                    chartData.Add(new chartDataEntry((float)item.Temperature)
+                    {
+                        Label = item.Time,
+                        ValueLabel = item.Temp,
+                        Color = SKColor.Parse(rgb),
+                    });
+                }
+                else if (item.Temperature < 0 && item.Temperature > -20)
+                {
+                    int mapVal = ((255 / 20) * (item.Temperature + 20));
                     string rHex = (0).ToString("x2");
                     string gHex = (255).ToString("x2");
                     string bHex = (255 - (255 - mapVal)).ToString("x2");
@@ -100,9 +114,7 @@ namespace Xamarin_WeatherApp.Views
                     });
                 }
             }
-            var chart = new LineChart() { Entries = chartData , LineMode=LineMode.Straight, PointMode=PointMode.Circle, BackgroundColor = SKColor.Parse("4c7c7c7c"), LabelTextSize = 30};
-            //chart.BackgroundColor = SKColor.Parse("#4c7c7c7c");
-            //chart.PointSize = 10;
+            var chart = new LineChart() { Entries = chartData , LineMode=LineMode.Straight, PointMode=PointMode.Circle, BackgroundColor = SKColor.Parse("107c7c7c"), LabelTextSize = 30};
             chart1.Chart = chart;
             
         }

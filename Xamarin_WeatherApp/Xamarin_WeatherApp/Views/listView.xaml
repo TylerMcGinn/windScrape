@@ -12,11 +12,11 @@
     </ContentPage.ToolbarItems>
         
             <AbsoluteLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
-                <ListView x:Name="weatherList" HasUnevenRows="True" BackgroundColor="White" SeparatorColor="Red" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <ListView x:Name="weatherList" HasUnevenRows="True" BackgroundColor="White" SeparatorColor="Gray" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Grid BackgroundColor="Transparent" Margin="10">
+                                <Grid BackgroundColor="Transparent" Margin="5">
 
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="auto"/>
