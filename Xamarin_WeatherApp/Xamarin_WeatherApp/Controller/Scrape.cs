@@ -13,11 +13,9 @@ namespace Xamarin_WeatherApp
     public class Scrape
     {
 
-        //public delegate void DownloadCompleteEventHandler(object source, EventArgs args);
-        //public event DownloadCompleteEventHandler DownloadComplete;
-        public delegate void myDel(string errorMessage);
+        public delegate void ListErrorDelegate(string errorMessage);
 
-        public async Task<ObservableCollection<WeatherProperties>> scrapeData(myDel del)
+        public async Task<ObservableCollection<WeatherProperties>> scrapeData(ListErrorDelegate del)
         {
             string webUrl = @"https://weather.gc.ca/forecast/hourly/bc-84_metric_e.html";
             WebClient webClient = new WebClient();
@@ -25,7 +23,7 @@ namespace Xamarin_WeatherApp
             return filterRawHTML(rawHTML, del);
         }
 
-        public ObservableCollection<WeatherProperties> filterRawHTML(string raw, myDel del)
+        public ObservableCollection<WeatherProperties> filterRawHTML(string raw, ListErrorDelegate del)
         {
             string[] separators = { "\r\n", "\r", "\n" };
             int rawlength = raw.Length;
@@ -81,20 +79,14 @@ namespace Xamarin_WeatherApp
                     return Lists.masterList;
                 }
             }
-            //Lists.masterList.Add(new WeatherProperties() { Time = "", Temperature = 0, Temp = "", Conditions = "", Precipitation = "", Wind = ""});
-            //Lists.masterList.Add(new WeatherProperties() { Time = "", Temperature = 0, Temp = "", Conditions = "", Precipitation = "", Wind = "" });
-            //Lists.masterList.Add(new WeatherProperties() { Time = "", Temperature = 0, Temp = "", Conditions = "", Precipitation = "", Wind = ""});
-            //onDownloadComplete();
+            
             return Lists.masterList;
         }
-        //protected virtual void onDownloadComplete()
-        //{
-        //    if (DownloadComplete != null) DownloadComplete(this, EventArgs.Empty);
-        //}
+        
 
         public static string setWeatherIcon(string condition)
         {
-            if (condition.ToLower() == "sunny" || condition.ToLower() == "clear")
+            if (condition.ToLower() == "sunny" || condition.ToLower().Contains("sun") || condition.ToLower() == "clear")
             {
                 return "daySunny.png";
             }

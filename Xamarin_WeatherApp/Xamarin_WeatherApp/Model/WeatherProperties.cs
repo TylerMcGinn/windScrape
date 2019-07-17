@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using System.Text.RegularExpressions;
 
 namespace Xamarin_WeatherApp
 {
@@ -17,14 +18,14 @@ namespace Xamarin_WeatherApp
         public string Precipitation { get; set; }
         public string Wind { get; set; }
         public string Icon { get; set; }
-        public static string Color(string temp)
-        {
-
-        }
+        
+       
         public override string ToString()
         {
             return $"Time:{Time}, Temperature:{Temperature}, Conditions:{Conditions}, Precipitation:{Precipitation}, Wind:{Wind}";
         }
-        //public string tempString { get => this.Temperature.ToString(); }
+        
+        
+        
     }
 }
